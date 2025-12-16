@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'htu_portal',
     'accounts',
+    'courses',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
