@@ -17,3 +17,18 @@ class IsStudentOrTeacherOrAdmin(BasePermission):
                 User.Role.TEACHER,
             ]
         )
+class IsStudentOrAdmin(BasePermission):
+    def has_permission(self, request, view):
+        return (
+            request.user.is_authenticated and
+            request.user.role in [User.Role.STUDENT, User.Role.ADMIN]
+        )
+
+
+
+class IsTeacherOrAdmin(BasePermission):
+    def has_permission(self, request, view):
+        return (
+            request.user.is_authenticated and
+            request.user.role in [User.Role.TEACHER, User.Role.ADMIN]
+        )

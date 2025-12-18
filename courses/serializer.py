@@ -60,3 +60,21 @@ class CourseSerializer(serializers.ModelSerializer):
 
         instance.save()
         return instance
+
+class CourseMiniSerializer(serializers.ModelSerializer):
+    teacher_name = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Course
+        fields = [
+            "course_id",
+            "name",
+            "course_code",
+            "credit_hours",
+            "teacher_name",
+        ]
+
+    def get_teacher_name(self, obj):
+        if obj.teacher:
+            return f"{obj.teacher.user.first_name} {obj.teacher.user.last_name}"
+        return None
