@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from accounts.permissions import IsAdmin
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.permissions import IsAuthenticated
 from .models import Course
 from .serializer import CourseSerializer
 from accounts.permissions import IsStudentOrTeacherOrAdmin
