@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'accounts',
     'courses',
     'enrollment',
+    'results',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
