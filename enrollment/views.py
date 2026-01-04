@@ -23,5 +23,7 @@ class CourseStudentsView(ListAPIView):
     permission_classes = [IsTeacherOrAdmin]
     def get_queryset(self):
         course_id = self.kwargs["course_id"]
-        return Enrollment.objects.filter(course__course_id = course_id, course__teacher=self.request.user.teacher).select_related("student")
-    
+        return Enrollment.objects.filter(
+            course__id=course_id,
+            course__teacher=self.request.user.teacher
+        ).select_related("student", "student__user")    

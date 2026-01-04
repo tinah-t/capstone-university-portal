@@ -38,6 +38,6 @@ class CourseResultsView(ListAPIView):
     def get_queryset(self):
         course_id = self.kwargs["course_id"]
         return Result.objects.filter(
-            course__course_id=course_id,
+            course__id=course_id,
             course__teacher=self.request.user.teacher
         ).select_related("student", "student__user", "course")
