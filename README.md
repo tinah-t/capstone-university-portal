@@ -47,25 +47,37 @@ results/
 ```
 POST /api/auth/login/
 ```
-
+ADMIN
 Request:
-```json
+{
+  "username": "abee",
+  "password": "Ab@123!!!bb"
+}
+STUDENT
+Request:
+{
+  "username": "burte",
+  "password": "Ab@123!!bb"
+}
+TEACHER
+Request:
 {
   "username": "john",
-  "password": "password123"
+  "password": "Ab@123!!bb"
 }
-```
-
 ---
 
 ## 👤 Accounts API
 
 ### Get All Users (Admin only)
 ```
-GET /api/users/
+GET /api/accounts/users/
 ```
+### Create a student (Admin only)
+POST /api/accounts/students/create/
 
----
+### Create a teacher (Admin only)
+POST /api/accounts/teachers/create/
 
 ## 📘 Courses API
 
@@ -83,12 +95,6 @@ POST /api/courses/
 ```
 PATCH /api/courses/{id}/
 ```
-
-### Teacher Courses
-```
-GET /api/teacher/courses/
-```
-
 ---
 
 ## 📝 Enrollment API
@@ -98,10 +104,6 @@ GET /api/teacher/courses/
 POST /api/register-course/
 ```
 
-### Student Courses
-```
-GET /api/student/courses/
-```
 
 ### Course Students (Teacher)
 ```
@@ -109,6 +111,23 @@ GET /api/course/{id}/students/
 ```
 
 ---
+## 🧮 Enrollement API
+
+### Enroll in course (Student)
+```
+POST /api/register-course/
+```
+{
+    "course_id": "CRS0002"
+}
+
+### Enrolled Courses (Student)
+
+GET api/student/courses/
+
+### Students Enrolled (Teacher)
+
+GET /api/course/2/students/
 
 ## 🧮 Results API
 
@@ -119,12 +138,12 @@ POST /api/results/
 
 ### Update Result (Teacher)
 ```
-PUT /api/results/{id}/
+PATCH /api/results/{id}/
 ```
 
-### Student Results
+### Student Results (Student)
 ```
-GET /api/results/
+GET /api/student/results/
 ```
 
 ### Course Results (Teacher)
